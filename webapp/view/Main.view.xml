@@ -21,7 +21,25 @@
                 header="inLog" showClearOnFB="false"
                 class="sapUiSmallMarginBottom"
             >
-              <fb:filterGroupItems>                                
+              <fb:filterGroupItems>
+               <fb:FilterGroupItem name="AMS"
+								label="AMS" 
+								groupName="Group1" 
+								visibleInFilterBar="true" mandatory="true">
+                                    <fb:control>
+                                        <!-- <MultiInput id="idAms"
+                                            valueHelpIconSrc="sap-icon://value-help" value="{filters>/idAms}"
+                                            width="60%"  
+                                            valueHelpRequest="onAmsVHRequested"/> -->
+                                        <Input
+                                             id="idAms" 
+											 width="90%"  
+											 showValueHelp="false"
+											 value="{filters>/idAms}">
+                                        </Input>
+                                        
+                                    </fb:control>
+                                </fb:FilterGroupItem>                                
                                 <fb:FilterGroupItem name="Equipment" 
 								label="Equipment" 
 								groupName="Group1" 
@@ -36,7 +54,7 @@
                                         </Input> -->
                                         <MultiInput id="idEquipment"
 			valueHelpIconSrc="sap-icon://value-help" value="{filters>/idEquipment}"
-			width="60%"  class="sapUiSmallMarginBottom"
+			width="60%"  
 			valueHelpRequest="onSingleConditionVHRequested"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
@@ -50,7 +68,7 @@
                                             id="idDTP1"
                                             width="100%"
                                             placeholder="Enter Date &amp; Time"
-                                            class="sapUiSmallMarginBottom"/>
+                                           />
                                                                                     
 											</fb:control>
 										</fb:FilterGroupItem>
@@ -65,7 +83,7 @@
                                             id="idDTP2"
                                             width="100%"
                                             placeholder="Enter Date &amp; Time"
-                                            class="sapUiSmallMarginBottom" />
+                                             />
 											</fb:control>
 										</fb:FilterGroupItem>
 										 									

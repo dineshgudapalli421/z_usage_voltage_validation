@@ -31,7 +31,7 @@
 						</template>
 					</Column>
 					<Column width="11rem" resizable="true">
-						<m:Label text="Customer Address" />
+						<m:Label text="Service Address" />
 						<template>
 							<m:Text text="{VoltageValidationModel>Address}"/>
 						</template>
@@ -55,9 +55,15 @@
 						</template>
 					</Column>
 					<Column width="11rem" resizable="true">
-						<m:Label text="Date/Time(Zero Interval)" />
+						<m:Label text="Date/Time" />
 						<template>
 							<m:Text text="{VoltageValidationModel>DateTime}"/>
+						</template>
+					</Column>
+					<Column width="11rem" resizable="true">
+						<m:Label text="Voltage Difference in %" />
+						<template>
+							<m:Text text="{VoltageValidationModel>VoltageDifference}"/>
 						</template>
 					</Column>
 				</columns>
