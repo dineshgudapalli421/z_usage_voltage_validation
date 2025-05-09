@@ -19,44 +19,44 @@ sap.ui.define([
                 rowMode: "Fixed"
             }), "ui");
 
-            this._oSingleConditionMultiInput = this.byId("idEquipment");
+            this._oSingleConditionMultiInput = this.byId("idAms");
             //this._oSingleConditionMultiInput.setTokens(this._getDefaultTokens());
         },
         onSearch: function () {
             const oView = this.getView();
-            var aTokens = this.getView().byId("idEquipment").getTokens();
-            var equipmentValue = "";
-            if(aTokens.length === 0)
-            {
-                return MessageBox.error("Please select Equipment");
+            var equipment = this.getView().byId("idEquipment").getValue();
+            var aTokens = this.getView().byId("idAms").getTokens();
+            var amsValue = "";
+            var aFilter = [];
+            if (aTokens.length === 0 && equipment === "") {
+                return MessageBox.error("Either AMS or Equipment are mandatory...");
             }
-            else if(aTokens.length === 1){
-                equipmentValue = aTokens[0].getText();
-                equipmentValue = equipmentValue.replace("=","");
+            else if (aTokens.length === 1) {
+                amsValue = aTokens[0].getText();
+                amsValue = amsValue.replace("=", "");
+                aFilter.push(new Filter("AMS", FilterOperator.EQ, amsValue));
             }
-            else if(aTokens.length > 1){
-                return MessageBox.error("Select only one Equipment...");
-            }
-            // var aTokens = this.getView().byId("idEquipment").getTokens()[0].getText();
+            else if (aTokens.length === 2) {
+                //return MessageBox.error("Select only one ams...");
+                var amsValue1 = aTokens[0].getText();
+                amsValue1 = amsValue1.replace("=", "");
+                var amsValue2 = aTokens[1].getText();
+                amsValue2 = amsValue2.replace("=", "");
+                aFilter.push(new Filter("AMS", FilterOperator.BT, amsValue1, amsValue2));
 
-            // var aFilters = aTokens.map(function (oToken) {
-            //     if(oToken.data("range")) {
-            //         var oRange = oToken.data("range");
-            //         return new Filter({
-            //             path: "Equipment",
-            //             operator: oRange.exclude? "NE" : oRange.operation,
-            //             value1: oRange.value1,
-            //             value2: oRange.value2
-            //         });
-            //     }
-            //     else {
-            //         return new Filter({
-            //             path: "Equipment",
-            //             operator: "EQ",
-            //             value1: aTokens[0].getKey()
-            //         });					
-            //     }				
-            // });
+            }
+            else if (aTokens.length > 2) {
+                //return MessageBox.error("Select only one ams...");               
+                for (let i = 0; i <= aTokens.length - 1; i++) {
+                    amsValue = aTokens[i].getText();
+                    amsValue = amsValue.replace("=", "");
+                    aFilter.push(new Filter("AMS", FilterOperator.EQ, amsValue));
+                }
+            }
+            
+            if (equipment !== "") {
+                aFilter.push(new Filter("Equipment", FilterOperator.EQ, equipment));
+            }
 
             var periodFrom = this.getView().byId("idDTP1").getValue();
 
@@ -67,8 +67,7 @@ sap.ui.define([
             var fromDate = this.getDateFormat(this.byId("idDTP1").getDateValue());
             var toDate = this.getDateFormat(this.byId("idDTP2").getDateValue());
 
-            var aFilter = [];
-            aFilter.push(new Filter("Equipment", FilterOperator.EQ, equipmentValue));
+                    
 
             aFilter.push(new Filter("Period", FilterOperator.BT, fromDate, toDate));
             var oModel = this.getOwnerComponent().getModel();
@@ -106,15 +105,16 @@ sap.ui.define([
         // region Single Condition value help
         onSingleConditionVHRequested: function () {
             this.loadFragment({
-                name: "com.sap.lh.mr.zvoltagevalidation.fragment.equipment"
+                name: "com.sap.lh.mr.zvoltagevalidation.fragment.ams"
             }).then(function (oSingleConditionDialog) {
                 this._oSingleConditionDialog = oSingleConditionDialog;
+                this.getView().addDependent(oSingleConditionDialog);
                 oSingleConditionDialog.setRangeKeyFields([{
-                    label: "Equipment",
-                    key: "Equipment",
+                    label: "AMS",
+                    key: "Ams",
                     type: "string",
                     typeInstance: new TypeString({}, {
-                        maxLength: 22
+                        maxLength: 10
                     })
                 }]);
 

@@ -25,37 +25,41 @@
                <fb:FilterGroupItem name="AMS"
 								label="AMS" 
 								groupName="Group1" 
-								visibleInFilterBar="true" mandatory="true">
+								visibleInFilterBar="true" mandatory="false">
                                     <fb:control>
                                         <!-- <MultiInput id="idAms"
                                             valueHelpIconSrc="sap-icon://value-help" value="{filters>/idAms}"
                                             width="60%"  
                                             valueHelpRequest="onAmsVHRequested"/> -->
-                                        <Input
+                                        <!-- <Input
                                              id="idAms" 
 											 width="90%"  
 											 showValueHelp="false"
 											 value="{filters>/idAms}">
-                                        </Input>
+                                        </Input> -->
+                                        <MultiInput id="idAms"
+            valueHelpIconSrc="sap-icon://value-help" value="{filters>/idAms}"
+            width="60%"  
+            valueHelpRequest="onSingleConditionVHRequested"/>
                                         
                                     </fb:control>
                                 </fb:FilterGroupItem>                                
                                 <fb:FilterGroupItem name="Equipment" 
 								label="Equipment" 
 								groupName="Group1" 
-								visibleInFilterBar="true" mandatory="true">
+								visibleInFilterBar="true" mandatory="false">
                                     <fb:control>
-                                        <!-- <Input
+                                        <Input
                                          id="idEquipment" 
 										 width="90%"  
-										 showValueHelp="true"
+										 showValueHelp="false"
 										 value="{filters>/idEquipment}"
-                                         class="sapUiSmallMarginBottom" valueHelpRequest="onSingleConditionVHRequested">
-                                        </Input> -->
-                                        <MultiInput id="idEquipment"
+                                        >
+                                        </Input>
+                                        <!-- <MultiInput id="idEquipment"
 			valueHelpIconSrc="sap-icon://value-help" value="{filters>/idEquipment}"
 			width="60%"  
-			valueHelpRequest="onSingleConditionVHRequested"/>
+			valueHelpRequest="onSingleConditionVHRequested"/> -->
                                     </fb:control>
                                 </fb:FilterGroupItem>
 									<fb:FilterGroupItem 
