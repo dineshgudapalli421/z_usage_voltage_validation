@@ -1,0 +1,66 @@
+
+<core:FragmentDefinition xmlns:core="sap.ui.core" 	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+>
+<!-- <m:ScrollContainer  width="100%" horizontal="true" vertical="true" focusable="true"> -->
+	<Table id="idTableVolgeVal"
+				rows="{VoltageValidationModel>/}"
+				selectionMode="MultiToggle"
+				paste="onPaste"
+				rowMode="{ui>/rowMode}"
+				ariaLabelledBy="title" class="sapUiSmallMarginBottom">
+				<extension>
+					<m:OverflowToolbar style="Clear">
+						<m:Title id="title" text="Usage Voltage Validation"/>
+					</m:OverflowToolbar>
+				</extension>
+				<columns>
+					<Column width="11rem" resizable="true">
+						<m:Label text="Customer Number" />
+						<template>
+							<m:Text text="{VoltageValidationModel>CustomerNo}"/>
+						</template>
+					</Column>
+					<Column width="11rem" resizable="true">
+						<m:Label text="Customer Name" />
+						<template>
+							<m:Text text="{VoltageValidationModel>CustomerName}"/>
+						</template>
+					</Column>
+					<Column width="11rem" resizable="true">
+						<m:Label text="Customer Address" />
+						<template>
+							<m:Text text="{VoltageValidationModel>Address}"/>
+						</template>
+					</Column>
+					<Column width="11rem" resizable="true">
+						<m:Label text="Installation" />
+						<template>
+							<m:Text text="{VoltageValidationModel>Installation}"/>
+						</template>
+					</Column>
+					<Column width="11rem" resizable="true">
+						<m:Label text="Meter Number" />
+						<template>
+							<m:Text text="{VoltageValidationModel>MeterNo}"/>
+						</template>
+					</Column>
+					<Column width="11rem" resizable="true">
+						<m:Label text="Dev Location" />
+						<template>
+							<m:Text text="{VoltageValidationModel>DeviceLocation}"/>
+						</template>
+					</Column>
+					<Column width="11rem" resizable="true">
+						<m:Label text="Date/Time(Zero Interval)" />
+						<template>
+							<m:Text text="{VoltageValidationModel>DateTime}"/>
+						</template>
+					</Column>
+				</columns>
+			</Table>					
+<!-- </m:ScrollContainer> -->
+</core:FragmentDefinition>
