@@ -95,7 +95,8 @@ sap.ui.define([
 
             var oDateFormat = DateFormat.getInstance({
                 UTC: false,
-                pattern: "yyyy-MM-ddTHH:mm:ss"
+                pattern: "yyyy-MM-dd" 
+                // THH:mm:ss"
             });
 
             //var oDateFormat = DateFormat.getDateTimeInstance({ pattern: "yyyy-MM-ddTHH:mm:ss" });
