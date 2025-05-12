@@ -67,9 +67,10 @@ sap.ui.define([
             var fromDate = this.getDateFormat(this.byId("idDTP1").getDateValue());
             var toDate = this.getDateFormat(this.byId("idDTP2").getDateValue());
 
-                    
+            var threshold = this.getView().byId("idThreshold").getValue();       
 
             aFilter.push(new Filter("Period", FilterOperator.BT, fromDate, toDate));
+            aFilter.push(new Filter("Deviation", FilterOperator.EQ, threshold));
             var oModel = this.getOwnerComponent().getModel();
             var oJsonModel = new sap.ui.model.json.JSONModel();
             var oBusyDialog = new sap.m.BusyDialog({
@@ -134,27 +135,6 @@ sap.ui.define([
         onSingleConditionAfterClose: function () {
             this._oSingleConditionDialog.destroy();
         },
-        // #endregion
-        // _getDefaultTokens: function () {
-        //     var ValueHelpRangeOperation = compLibrary.valuehelpdialog.ValueHelpRangeOperation;
-        //     var oToken1 = new Token({
-        //         key: "range_0",
-        //         text: "=HT-1001"
-        //     }).data("range", {
-        //         "exclude": false,
-        //         "operation": ValueHelpRangeOperation.EQ,
-        //         "keyField": "Equipment"
-        //     });
-        //     var oToken2 = new Token({
-        //         key: "range_1",
-        //         text: "!(=HT-1000)"
-        //     }).data("range", {
-        //         "exclude": true,
-        //         "operation": ValueHelpRangeOperation.EQ,
-        //         "keyField": "Equipment"
-        //     });
-
-        //     return [oToken1, oToken2];
-        // }
+       
     });
 });

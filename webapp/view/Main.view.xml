@@ -68,12 +68,14 @@
 										groupName="Group1" 
 										visibleInFilterBar="true" mandatory="true">
 											<fb:control>											
-                                           <DateTimePicker
+                                           <!-- <DateTimePicker
                                             id="idDTP1"
                                             width="100%"
                                             placeholder="Enter Date &amp; Time"
-                                           />
-                                                                                    
+                                           /> -->
+                                             <DatePicker
+                    id="idDTP1" width="100%"
+                    placeholder="Enter Date"/>                                       
 											</fb:control>
 										</fb:FilterGroupItem>
 										 <!-- Profile Ratio -->
@@ -83,14 +85,30 @@
 											groupName="Group1"
 											visibleInFilterBar="true" mandatory="true">
 											<fb:control>
-												<DateTimePicker
+												<!-- <DateTimePicker
                                             id="idDTP2"
                                             width="100%"
                                             placeholder="Enter Date &amp; Time"
-                                             />
+                                             /> -->
+                                              <DatePicker
+                    id="idDTP2" width="100%"
+                    placeholder="Enter Date"/> 
 											</fb:control>
 										</fb:FilterGroupItem>
-										 									
+										<fb:FilterGroupItem name="ThresholdValue" 
+								label="Threshold Value" 
+								groupName="Group1" 
+								visibleInFilterBar="true" mandatory="false">
+                                    <fb:control>
+                                        <Input
+                                         id="idThreshold" 
+										 width="90%"  
+										 showValueHelp="false" 
+										 value="25"
+                                        >
+                                        </Input>
+                                    </fb:control>
+                                </fb:FilterGroupItem> 									
                                
                             </fb:filterGroupItems>
 						
