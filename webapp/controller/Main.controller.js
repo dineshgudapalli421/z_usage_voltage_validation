@@ -32,7 +32,7 @@ sap.ui.define([
                 var ams = this.getView().byId("idAms").getValue();
                 if(ams === "")
                 {
-                    return MessageBox.error("Either AMS or Equipment are mandatory...");
+                    return MessageBox.error("Either AMS or Equipment is mandatory...");
                 }
                 else if(ams !== "")
                 {
@@ -92,11 +92,22 @@ sap.ui.define([
                 success: function (response) {
                     oBusyDialog.close();
                     oJsonModel.setData(response.results);
+                    if(equipment !=="" && response.results.length>0)
+                    {
+                        let meterNo = oJsonModel.oData[0].MeterNo;
+                        const errorMessage = oJsonModel.oData[0].ErrorMessage;
+                        if(errorMessage !=="")
+                        {
+                            return MessageBox.error("Meter " + meterNo + " does not have Current channel(s)")
+                        }
+                    }                    
+                    //oJsonModel.oData[0].MeterNo
                     oView.byId("idTableVolgeVal").setModel(oJsonModel, "VoltageValidationModel");
                 },
                 error: (oError) => {
                     oBusyDialog.close();
                     console.error("Error:", oError);
+                    return MessageBox.error(oError);
                 }
             });
         },
