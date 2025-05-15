@@ -98,7 +98,7 @@ sap.ui.define([
                         const errorMessage = oJsonModel.oData[0].ErrorMessage;
                         if(errorMessage !=="")
                         {
-                            return MessageBox.error("Meter " + meterNo + " does not have Current channel(s)")
+                            return MessageBox.error("Meter " + meterNo + " does not have Voltage channel(s)")
                         }
                     }                    
                     //oJsonModel.oData[0].MeterNo
